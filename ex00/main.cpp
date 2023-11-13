@@ -6,15 +6,14 @@
 /*   By: rabril-h <rabril-h@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/12 16:31:01 by rabril-h          #+#    #+#             */
-/*   Updated: 2023/11/12 17:17:34 by rabril-h         ###   ########.fr       */
+/*   Updated: 2023/11/12 21:00:48 by rabril-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
+#include "./classes/BitcoinExchange.hpp"
 
 int main(int argc, char **argv)
 {
-  
   
   if (argc != 2)
   {
@@ -24,14 +23,12 @@ int main(int argc, char **argv)
 
   try
   {
-    std::cout << argv[1] << std::endl;
+    BitcoinExchange::init(argv[1]);
   }
   catch(const std::exception& e)
   {
     std::cerr << e.what() << '\n';
-  }
-  
-  
+  } 
 
 
 

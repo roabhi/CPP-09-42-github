@@ -6,7 +6,7 @@
 #    By: rabril-h <rabril-h@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/12 16:31:06 by rabril-h          #+#    #+#              #
-#    Updated: 2023/11/12 16:38:16 by rabril-h         ###   ########.fr        #
+#    Updated: 2023/11/12 19:20:44 by rabril-h         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ CC = c++
 CFLAGS = -Werror -Wextra -Wall -std=c++98 -g -fsanitize=address
 
 
-FILES = main 
+FILES = main ./classes/BitcoinExchange
 
 SRC = $(addsuffix .cpp, $(FILES))
 
