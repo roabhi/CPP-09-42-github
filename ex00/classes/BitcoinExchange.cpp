@@ -6,7 +6,7 @@
 /*   By: rabril-h <rabril-h@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/12 17:10:59 by rabril-h          #+#    #+#             */
-/*   Updated: 2023/11/13 17:23:26 by rabril-h         ###   ########.fr       */
+/*   Updated: 2023/11/13 18:06:08 by rabril-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,15 +59,14 @@ void	BitcoinExchange::parseDate(std::string date)
 	}
 }
 
-
 void	BitcoinExchange::parseFileLine(std::string date, float value)
 {
 	bool	error = false;
 
 	if (value < 0)
-		throw std::out_of_range("Error: not a positive number.");
+		throw std::out_of_range("Error: amount less than zero...");
 	if (value > 1000)
-		throw std::out_of_range("Error: number too large.");
+		throw std::out_of_range("Error: amount bigger than 1000.");
 	if (date.length() >= 10)
 	{
 		std::string	year = date.substr(0, 4);
@@ -108,9 +107,9 @@ int	BitcoinExchange::processFile(std::string file_path)
 	if (!file.is_open())
 	{
 		std::string error;
-		error = "No se pudo abrir el archivo ";
+		error = "File ";
 		error.append(file_path);
-		error.append(".");
+		error.append(" could not be opened.");
 		throw std::runtime_error(error);
 		return (1);
 	}
@@ -132,7 +131,7 @@ int	BitcoinExchange::processFile(std::string file_path)
 				{
 					value = value.substr(1, value.length());
 					for (int i = 0; i < (int)value.length(); i++)
-						if (!std::isdigit(value[i]) && value[i] != '.')
+						if (!std::isdigit(value[i]) && value[i] != '.' && value[i] != '-')
 							throw std::invalid_argument("Error: invalid number");
 					fvalue = std::stof(value);
 				}
@@ -158,7 +157,6 @@ int	BitcoinExchange::processFile(std::string file_path)
 		else
 			std::cout << "Error: date " << line << " is invalid." << std::endl;
 	}
-
 	return (0);
 }
 
@@ -217,11 +215,8 @@ int BitcoinExchange::setDb()
 	return (0);
 }
 
-
-
 void  BitcoinExchange::init(std::string file_path)
 {
-  // std::cout << "file path from class is " << file_path << std::endl;
 
   if (BitcoinExchange::setDb())
     throw std::runtime_error("Error parsing dates from Database");
