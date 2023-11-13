@@ -5,12 +5,13 @@
 #                                                     +:+ +:+         +:+      #
 #    By: rabril-h <rabril-h@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/11/12 16:31:06 by rabril-h          #+#    #+#              #
-#    Updated: 2023/11/13 19:21:05 by rabril-h         ###   ########.fr        #
+#    Created: 2023/11/13 18:35:26 by rabril-h          #+#    #+#              #
+#    Updated: 2023/11/13 19:20:28 by rabril-h         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = btc
+
+NAME = RPN
 
 
 RM = rm -f
@@ -18,7 +19,7 @@ CC = c++
 CFLAGS = -Werror -Wextra -Wall -std=c++98 -g -fsanitize=address
 
 
-FILES = main ./classes/BitcoinExchange
+FILES = main ./classes/RPN
 
 SRC = $(addsuffix .cpp, $(FILES))
 

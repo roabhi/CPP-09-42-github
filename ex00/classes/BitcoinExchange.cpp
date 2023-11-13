@@ -6,7 +6,7 @@
 /*   By: rabril-h <rabril-h@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/12 17:10:59 by rabril-h          #+#    #+#             */
-/*   Updated: 2023/11/13 18:06:08 by rabril-h         ###   ########.fr       */
+/*   Updated: 2023/11/13 18:34:38 by rabril-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ void	BitcoinExchange::parseDate(std::string date)
 			else
 				throw std::runtime_error("There's an error in a date.");
 		}
-
 	}
 }
 
