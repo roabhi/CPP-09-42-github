@@ -6,7 +6,7 @@
 /*   By: rabril-h <rabril-h@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 18:46:32 by rabril-h          #+#    #+#             */
-/*   Updated: 2023/11/13 19:17:17 by rabril-h         ###   ########.fr       */
+/*   Updated: 2023/11/14 21:26:08 by rabril-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 
 class RPN {
   public:
-    static void init(std::string input);
+    static int init(std::string input);
 
   private:
     // ? Cannonical - THIS IS A STATIC CLASS
@@ -31,6 +31,11 @@ class RPN {
 
     //? Member vars
     static std::stack<int>  _stack;
+
+    // ? Member funcs
+
+    static void parseData(std::string);
+    static int calc(char c);
 
 
 

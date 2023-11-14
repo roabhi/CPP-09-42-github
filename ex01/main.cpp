@@ -6,7 +6,7 @@
 /*   By: rabril-h <rabril-h@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 18:38:43 by rabril-h          #+#    #+#             */
-/*   Updated: 2023/11/13 19:16:33 by rabril-h         ###   ########.fr       */
+/*   Updated: 2023/11/14 21:27:33 by rabril-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,9 @@ int main(int argc, char **argv)
     std::cout << "Please provide an operation between quotesto perform Usage: ./RPN \"....\" " << std::endl;
     return (1);
   }
-
   try
   {
-    RPN::init(argv[1]);
+   std::cout << RPN::init(argv[1]) << std::endl;
   }
   catch(const std::exception& e)
   {
