@@ -6,7 +6,7 @@
 /*   By: rabril-h <rabril-h@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 19:09:22 by rabril-h          #+#    #+#             */
-/*   Updated: 2023/11/14 21:27:27 by rabril-h         ###   ########.fr       */
+/*   Updated: 2023/11/14 21:32:33 by rabril-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,6 @@ void  RPN::parseData(std::string input)
     c++;
   }
 }
-
 
 int RPN::init(std::string input)
 {
