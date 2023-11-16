@@ -6,7 +6,7 @@
 /*   By: rabril-h <rabril-h@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 21:12:26 by rabril-h          #+#    #+#             */
-/*   Updated: 2023/11/15 22:47:17 by rabril-h         ###   ########.fr       */
+/*   Updated: 2023/11/16 21:48:52 by rabril-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,9 @@ class PmergeMe {
     static void         sortMergeVec( unsigned int start, unsigned int mid, unsigned int end );
     static void         sortInsertVec( unsigned int start, unsigned int end );
 
-
+    static void         sortDque(unsigned int start, unsigned int end);
+    static void         sortMergeDque(unsigned int start, unsigned int mid, unsigned int end);
+    static void         sortInsertDque(unsigned int start, unsigned int end);
 
 
 
