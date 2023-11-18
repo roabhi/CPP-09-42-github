@@ -6,7 +6,7 @@
 /*   By: rabril-h <rabril-h@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 19:09:22 by rabril-h          #+#    #+#             */
-/*   Updated: 2023/11/14 21:32:33 by rabril-h         ###   ########.fr       */
+/*   Updated: 2023/11/18 15:02:54 by rabril-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ RPN::~RPN(void)
   return ;
 }
 
+// ? Calc values 
+
 int RPN::calc(char c)
 {
 
@@ -42,10 +44,11 @@ int RPN::calc(char c)
   RPN::_stack.pop();
 
   std::string sign[4] = {"-","+","/","*"};
+
   int count = 0;
   while (sign[count][0] != c)
     count++;
-  switch (count) //  TODO change this to if else
+  switch (count) 
   {
     case 0:
       return (s - f);
@@ -63,6 +66,8 @@ int RPN::calc(char c)
   }
   return (0);
 }
+
+// ? Argv parser as Reverse Polish Notation rules (1 1 +) is equal 2 not (1 + 1)
 
 void  RPN::parseData(std::string input)
 {
@@ -83,7 +88,7 @@ void  RPN::parseData(std::string input)
       {
         if (RPN::_stack.size() > 1)
         {
-          RPN::_stack.push(RPN::calc(input[c]));
+          RPN::_stack.push(RPN::calc(input[c])); // ? send to calc here so stack only has one number at the end of calculation
         }
         else
         {
@@ -99,6 +104,8 @@ void  RPN::parseData(std::string input)
   }
 }
 
+// ? Entry point
+
 int RPN::init(std::string input)
 {
   RPN::parseData(input);
@@ -107,5 +114,7 @@ int RPN::init(std::string input)
     return (RPN::_stack.top());
   throw std::invalid_argument("Not a valid input");
 }
+
+// ? Static reference for private container
 
 std::stack<int>  RPN::_stack;

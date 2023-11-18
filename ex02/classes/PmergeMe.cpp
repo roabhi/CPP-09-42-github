@@ -6,7 +6,7 @@
 /*   By: rabril-h <rabril-h@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 21:16:50 by rabril-h          #+#    #+#             */
-/*   Updated: 2023/11/16 22:02:42 by rabril-h         ###   ########.fr       */
+/*   Updated: 2023/11/18 16:53:46 by rabril-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,19 +36,19 @@ PmergeMe::~PmergeMe(void)
 }
 
 // * Utils funcs
-template < typename T >
-bool	PmergeMe::isSorted( typename T::iterator begin, typename T::iterator end )
-{
-	typename T::value_type	last;
+// template < typename T >
+// bool	PmergeMe::isSorted( typename T::iterator begin, typename T::iterator end )
+// {
+// 	typename T::value_type	last;
 
-	for ( typename T::iterator it = begin; it != end; it++ )
-	{
-		if ( it != begin &&  *it < last )
-			return ( false );
-		last = *it;
-	}
-	return ( true );
-}
+// 	for ( typename T::iterator it = begin; it != end; it++ )
+// 	{
+// 		if ( it != begin &&  *it < last )
+// 			return ( false );
+// 		last = *it;
+// 	}
+// 	return ( true );
+// }
 
 void	PmergeMe::printContainer( std::string msg, std::vector< int > vec )
 {
@@ -88,7 +88,7 @@ bool	PmergeMe::isNumPos( std::string num, std::string& error )
 	}
 	if ( negative == true )
 	{
-		error = "Error Not a positive number: ";
+		error = "Error: Do not use negative values: ";
 		return ( false );
 	}
 	return ( true );
@@ -111,7 +111,7 @@ bool	PmergeMe::isNumInt( std::string num, std::string& error )
 	len = num.length();
 	if ( len == 0 )
 	{
-		error = "Error: empty string is not a valid number: ";
+		error = "Error: please do not place empty values: ";
 		return ( false );
 	}
 	integerMax = intToStr( INT_MAX );
@@ -119,7 +119,7 @@ bool	PmergeMe::isNumInt( std::string num, std::string& error )
 		|| ( len == integerMax.length() \
 			&& integerMax.compare( num ) < 0 ) )
 	{
-		error = "Error: Not an integer -> [ overflow ]: ";
+		error = "Error: Number bigger than int: ";
 		return ( false );
 	}
 	return ( true );
@@ -138,8 +138,9 @@ void	PmergeMe::checkInput(char **input)
 			throw std::invalid_argument( error + std::string( input[ i ] ) );
 		// ? check param
 		// std::cout << std::atoi(input [i]) << std::endl;
+		// ? We do not tolerate duplicate numebers as stated in the subject as left to my discretion
 		if ( std::find< std::vector< int >::iterator, int >( PmergeMe::_vec.begin(), PmergeMe::_vec.end(), std::atoi( input[ i ] ) ) != PmergeMe::_vec.end() )
-			throw std::invalid_argument( "Error: Duplicate number is invalid => " + std::string( input[ i ] ) );
+			throw std::invalid_argument( "Error: Duplicate number are not allowed : " + std::string( input[ i ] ) );
 		PmergeMe::_vec.push_back( std::atoi( input[ i ] ) );
 		PmergeMe::_dque.push_back( std::atoi( input[ i ] ) );
 	}
@@ -194,7 +195,7 @@ void	PmergeMe::sortVec(unsigned int start, unsigned int end )
 {
 	int	mid;
 
-	if ( end - start > 5 )
+	if ( end - start > 5 ) // ? Take five as size for splitting groups with a middle value / chunks
 	{
 		mid = ( start + end ) / 2;
 		sortVec( start, mid );
@@ -263,7 +264,6 @@ void	PmergeMe::sortDque(unsigned int start, unsigned int end)
 }
 
 
-
 // * Entry point
 void PmergeMe::init(char **input)
 { 
@@ -273,11 +273,11 @@ void PmergeMe::init(char **input)
   checkInput( input);
   printContainer("Before", PmergeMe::_vec);
 
-	// ? sorting and insertion for vector
+	// ? sorting and insertion for vector -  take into account sorting and inserting times
   vecTime[ 0 ] = std::clock();
   sortVec(0, PmergeMe::_vec.size() - 1);
   vecTime[ 1 ] = std::clock();
-	// ? sorting and insertion for dque
+	// ? sorting and insertion for dque - take into account sroting and inserting times
 	dqueTime[ 0 ] = std::clock();
 	sortDque(0, PmergeMe::_dque.size() - 1);
 	dqueTime[ 1 ] = std::clock();
@@ -292,11 +292,11 @@ void PmergeMe::init(char **input)
 	// ? final checks
 
 	// if ( PmergeMe::isSorted< std::vector< int > >( PmergeMe::_vec.begin(), PmergeMe::_vec.end() ) == false )
-	// 	throw std::runtime_error( "\033[1;91mVector Is not sorted\033[1;97m" );
-	// std::cout << "\033[1;92mVector Is sorted\033[1;97m" << std::endl;
+	// 	throw std::runtime_error( "Vector unsorted" );
+	// std::cout << "Vector sorted" << std::endl;
 	// if ( PmergeMe::isSorted< std::deque< int > >( PmergeMe::_dque.begin(), PmergeMe::_dque.end() ) == false )
-	// 	throw std::runtime_error( "\033[1;91mDeque Is not sorted\033[1;97m" );
-	// std::cout << "\033[1;92mDeque Is sorted\033[1;97m" << std::endl;
+	// 	throw std::runtime_error( "Deque unsorted" );
+	// std::cout << "Deque sorted" << std::endl;
 
 }
 

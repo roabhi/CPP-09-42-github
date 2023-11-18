@@ -6,13 +6,13 @@
 /*   By: rabril-h <rabril-h@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/12 17:10:59 by rabril-h          #+#    #+#             */
-/*   Updated: 2023/11/13 19:29:10 by rabril-h         ###   ########.fr       */
+/*   Updated: 2023/11/18 14:44:06 by rabril-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
 
-
+// ?  Cannonical
 
 BitcoinExchange::BitcoinExchange(void)
 {
@@ -34,6 +34,9 @@ BitcoinExchange::~BitcoinExchange(void)
 {
   return ;
 }
+
+// ? Date parser
+
 void	BitcoinExchange::parseDate(std::string date)
 {
 	for (int i = 0; i < (int)date.length(); i++)
@@ -57,6 +60,8 @@ void	BitcoinExchange::parseDate(std::string date)
 		}
 	}
 }
+
+// ? Paser for each line from the input file
 
 void	BitcoinExchange::parseFileLine(std::string date, float price)
 {
@@ -99,6 +104,8 @@ void	BitcoinExchange::parseFileLine(std::string date, float price)
 		throw std::invalid_argument(error);
 	}
 }
+
+// ? Open and process file form input
 
 int	BitcoinExchange::processFile(std::string file_path)
 {
@@ -159,6 +166,7 @@ int	BitcoinExchange::processFile(std::string file_path)
 	return (0);
 }
 
+// ? Initialize DB from .csv file
 
 int BitcoinExchange::setDb()
 {
@@ -214,6 +222,8 @@ int BitcoinExchange::setDb()
 	return (0);
 }
 
+// ? Entry point
+
 void  BitcoinExchange::init(std::string file_path)
 {
 
@@ -223,5 +233,6 @@ void  BitcoinExchange::init(std::string file_path)
 		throw std::runtime_error("Error processing input file. Check your prices");
 }
 
+// ?  Static reference for private map container
 
 std::map<std::string, float> BitcoinExchange::_data; 
