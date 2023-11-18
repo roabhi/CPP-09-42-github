@@ -6,7 +6,7 @@
 /*   By: rabril-h <rabril-h@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 21:16:50 by rabril-h          #+#    #+#             */
-/*   Updated: 2023/11/18 16:53:46 by rabril-h         ###   ########.fr       */
+/*   Updated: 2023/11/18 16:57:14 by rabril-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,21 +34,6 @@ PmergeMe::~PmergeMe(void)
 {
   return ;
 }
-
-// * Utils funcs
-// template < typename T >
-// bool	PmergeMe::isSorted( typename T::iterator begin, typename T::iterator end )
-// {
-// 	typename T::value_type	last;
-
-// 	for ( typename T::iterator it = begin; it != end; it++ )
-// 	{
-// 		if ( it != begin &&  *it < last )
-// 			return ( false );
-// 		last = *it;
-// 	}
-// 	return ( true );
-// }
 
 void	PmergeMe::printContainer( std::string msg, std::vector< int > vec )
 {
@@ -288,15 +273,6 @@ void PmergeMe::init(char **input)
   printTimes( PmergeMe::_vec.size(), "vector", ( static_cast< double >( vecTime[ 1 ] - vecTime[ 0 ] ) / CLOCKS_PER_SEC ) * 1000000 );
 	// ? print result for dque
 	printTimes( PmergeMe::_dque.size(), "deque", ( static_cast< double >( dqueTime[ 1 ] - dqueTime[ 0 ] ) / CLOCKS_PER_SEC ) * 1000000 );
-
-	// ? final checks
-
-	// if ( PmergeMe::isSorted< std::vector< int > >( PmergeMe::_vec.begin(), PmergeMe::_vec.end() ) == false )
-	// 	throw std::runtime_error( "Vector unsorted" );
-	// std::cout << "Vector sorted" << std::endl;
-	// if ( PmergeMe::isSorted< std::deque< int > >( PmergeMe::_dque.begin(), PmergeMe::_dque.end() ) == false )
-	// 	throw std::runtime_error( "Deque unsorted" );
-	// std::cout << "Deque sorted" << std::endl;
 
 }
 

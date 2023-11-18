@@ -6,7 +6,7 @@
 /*   By: rabril-h <rabril-h@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 21:12:26 by rabril-h          #+#    #+#             */
-/*   Updated: 2023/11/18 15:29:48 by rabril-h         ###   ########.fr       */
+/*   Updated: 2023/11/18 16:57:20 by rabril-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,6 @@ class PmergeMe {
 
     static std::vector< int >	_vec;
 	  static std::deque< int >	_dque;
-
-
-    // ? Template utils for checking the sort
-    template < typename T > 
-		static bool		    	isSorted( typename T::iterator begin, typename T::iterator end );
 
     // ? Member functions UTILS
 
