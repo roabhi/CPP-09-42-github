@@ -6,7 +6,7 @@
 /*   By: rabril-h <rabril-h@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 21:12:26 by rabril-h          #+#    #+#             */
-/*   Updated: 2023/11/18 16:57:20 by rabril-h         ###   ########.fr       */
+/*   Updated: 2023/11/18 16:59:17 by rabril-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,6 @@ class PmergeMe {
 
   public:
     static void init(char **input);
-
-    static std::vector<int> getVector();
 
   private:
 
